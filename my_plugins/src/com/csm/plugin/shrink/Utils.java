@@ -3,15 +3,9 @@ package com.csm.plugin.shrink;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiImportStatement;
-import com.intellij.psi.PsiJavaCodeReferenceElement;
-import com.intellij.psi.PsiManager;
-import com.intellij.psi.PsiTypeElement;
+import com.intellij.psi.*;
 import com.intellij.psi.impl.source.xml.XmlAttributeImpl;
 import com.intellij.psi.impl.source.xml.XmlTokenImpl;
-
 import org.apache.http.util.TextUtils;
 
 import java.io.File;
@@ -580,7 +574,7 @@ public class Utils {
      * @param childs
      * @param deep
      */
-    void jiexi(com.intellij.psi.PsiElement[] childs, HashSet<String> javaSet, int deep) {
+    void jiexi(PsiElement[] childs, HashSet<String> javaSet, int deep) {
         for (PsiElement psiElement : childs) {
             if (false) {
                 for (int i = 0; i < deep; i++) {
