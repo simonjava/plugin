@@ -38,358 +38,69 @@ public class SimpleReplace {
 
         ArrayList<FF> pairs = new ArrayList<>();
         {
-            FF ff = new FF(false, "BaseComponentActivity", "com.wali.live.video.BaseComponentActivity");
+            FF ff = new FF(false, "UserAccountManager", "com.xiaomi.gamecenter.account.UserAccountManager");
             pairs.add(ff);
         }
         {
-            FF ff = new FF(false, "com.wali.live.base.BaseAppActivity", "com.xiaomi.channel.base.BaseAppActivity");
+            FF ff = new FF(false, "MyUserInfoManager", "com.xiaomi.gamecenter.account.user.MyUserInfoManager");
             pairs.add(ff);
         }
         {
-            FF ff = new FF(false, "com.wali.live.activity.WebViewActivity", "com.xiaomi.channel.activity.WebViewActivity");
+            FF ff = new FF(false, "MiLinkClientAdapter", "com.xiaomi.gamecenter.milink.MiLinkClientAdapter");
             pairs.add(ff);
         }
         {
-            FF ff = new FF(false, "com.wali.live.listener.FragmentDataListener", "com.wali.live.common.listener.FragmentDataListener");
+            FF ff = new FF(false, "PermissionUtils", "com.xiaomi.gamecenter.util.PermissionUtils");
             pairs.add(ff);
         }
         {
-            FF ff = new FF(false, "RechargeFragment", "com.xiaomi.channel.recharge.view.RechargeFragment");
-            pairs.add(ff);
-        }
-
-        {
-            FF ff = new FF(false, "RepeatScrollView", "com.xiaomi.channel.michannel.view.RepeatScrollView");
+            FF ff = new FF(true, "MiLinkClientAdapter.getsInstance()", "MiLinkClientAdapter.getInstance()");
             pairs.add(ff);
         }
         {
-            FF ff = new FF(false, "com.wali.live.utils.Base64", "com.xiaomi.channel.utils.Base64");
+            FF ff = new FF(false, "FileUtils", "com.xiaomi.gamecenter.util.FileUtils");
             pairs.add(ff);
         }
         {
-            FF ff = new FF(false, "IScrollListener", "com.xiaomi.channel.michannel.view.IScrollListener");
+            FF ff = new FF(false, "MessageType", "com.xiaomi.gamecenter.data.MessageType");
             pairs.add(ff);
         }
         {
-            FF ff = new FF(false, "RelationUtils", "com.wali.live.communication.chat.common.relation.RelationUtils");
+            FF ff = new FF(false, "SDCardUtils", "com.xiaomi.gamecenter.util.SDCardUtils");
             pairs.add(ff);
         }
         {
-            FF ff = new FF(false, "IShareView", "com.xiaomi.channel.presentation.view.IShareView");
+            FF ff = new FF(false, "MD5", "com.xiaomi.gamecenter.util.MD5");
             pairs.add(ff);
         }
         {
-            FF ff = new FF(false, ".EventController", "com.xiaomi.channel.eventbus.EventController");
+            FF ff = new FF(false, "Constants", "com.xiaomi.gamecenter.Constants");
             pairs.add(ff);
         }
         {
-            FF ff = new FF(false, "NetworkReceiver", "com.xiaomi.channel.receiver.NetworkReceiver");
+            FF ff = new FF(false, "R", "com.xiaomi.gamecenter.R");
             pairs.add(ff);
         }
         {
-            FF ff = new FF(false, ".LiveShow;", "com.xiaomi.channel.data.LiveShow");
+            FF ff = new FF(false, "DisplayUtils", "com.xiaomi.gamecenter.util.DisplayUtils");
             pairs.add(ff);
         }
         {
-            FF ff = new FF(false, "com.wali.live.api.UserInfoManager", "com.xiaomi.channel.api.UserInfoManager");
-            pairs.add(ff);
-        }
-
-        {
-            FF ff = new FF(false, "AvatarUtils", "com.mi.live.data.Utils.AvatarUtils");
-            pairs.add(ff);
-        }
-
-        {
-            FF ff = new FF(false, "CallActionController", "com.xiaomi.channel.voip.controller.CallActionController");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false, "com.wali.live.data.UserListData", "com.mi.live.data.relation.model.UserListData");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false, "SmileyParser", "com.wali.live.common.smiley.originsmileypicker.SmileyParser");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false, "SmileyTranslateFilter", "com.wali.live.common.smiley.originsmileypicker.SmileyTranslateFilter");
-            pairs.add(ff);
-        }
-
-        {
-            FF ff = new FF(false, "SmileyInputFilter", "com.wali.live.common.smiley.originsmileypicker.SmileyInputFilter");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false, "SmileyPicker", "com.wali.live.common.smiley.view.SmileyPicker");
-            pairs.add(ff);
-        }
-
-        {
-            FF ff = new FF(false, "AppCommonUtils", "com.xiaomi.channel.utils.AppCommonUtils");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false, "IndexableRecyclerView", "com.wali.live.common.view.IndexableRecyclerView");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false, "com.wali.live.eventbus.EventClass", "com.xiaomi.channel.eventbus.EventClass");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false, "BackShowListData", "com.xiaomi.channel.data.BackShowListData");
-            pairs.add(ff);
-        }
-
-        {
-            FF ff = new FF(false
-                    , "com.wali.live.fragment.BaseEventBusFragment"
-                    , "com.xiaomi.channel.fragment.BaseEventBusFragment");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false
-                    , "com.wali.live.fragment.BaseFragment"
-                    , "com.xiaomi.channel.fragment.BaseFragment");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false
-                    , "RechargeActivity"
-                    , "com.xiaomi.channel.recharge.activity.RechargeActivity");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false
-                    , "PushStatisticsDispatcher"
-                    , "com.xiaomi.channel.pushtimestatistics.PushStatisticsDispatcher");
+            FF ff = new FF(false, "CommonUtils", "com.xiaomi.gamecenter.util.CommonUtils");
             pairs.add(ff);
         }
 
 //        {
-//            FF ff = new FF(false
-//                    , ".Presenter"
-//                    , "com.base.presenter.Presenter");
-//            pairs.add(ff);
-//        }
-        {
-            FF ff = new FF(false
-                    , ".MyRxFragment"
-                    , "com.xiaomi.channel.fragment.MyRxFragment");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false
-                    , ".SchemeConstants"
-                    , "com.xiaomi.channel.scheme.SchemeConstants");
-            pairs.add(ff);
-        }
-
-        {
-            FF ff = new FF(false
-                    , ".BaseEventBusFragment"
-                    , "com.xiaomi.channel.fragment.BaseEventBusFragment");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false
-                    , ".CropImage"
-                    , "com.wali.live.common.crop.CropImage");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false
-                    , ".CropImageView"
-                    , "com.wali.live.common.crop.CropImageView");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false
-                    , ".RoomTag"
-                    , "com.wali.live.video.viewmodel.RoomTag");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false
-                    , "com.wali.live.utils.FragmentNaviUtils;"
-                    , "com.xiaomi.channel.utils.FragmentNaviUtils");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false
-                    , "EventController"
-                    , "com.xiaomi.channel.eventbus.EventController");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false
-                    , "PinyinUtils"
-                    , "com.base.utils.pinyin.PinyinUtils");
-            pairs.add(ff);
-        }
-
-        {
-            FF ff = new FF(false
-                    , "LiveLinearLayoutManager"
-                    , "com.wali.live.common.view.IndexableRecyclerview.LiveLinearLayoutManager");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false
-                    , "BalanceFragment"
-                    , "com.xiaomi.channel.recharge.fragment.BalanceFragment");
-            pairs.add(ff);
-        }
-//        {
-//            FF ff = new FF(false
-//                    , "LocationHelper"
-//                    , "com.xiaomi.channel.utils.LocationHelper");
+//            FF ff = new FF(false, "PreferenceUtils","com.mi.live.data.preference.MLPreferenceUtils");
 //            pairs.add(ff);
 //        }
 
-        {
-            FF ff = new FF(false
-                    , "RxCountDown"
-                    , "com.xiaomi.channel.utils.RxCountDown");
-            pairs.add(ff);
-        }
 
-
-        {
-            FF ff = new FF(false
-                    , ".OnItemLongClickListener;"
-                    , "com.xiaomi.channel.listener.OnItemLongClickListener");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false
-                    , "LoginActivity"
-                    , "com.xiaomi.channel.activity.LoginActivity");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false
-                    , "WebViewListener"
-                    , "com.xiaomi.channel.view.webview.WebViewListener");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false
-                    , "InjectedWebViewClient"
-                    , "com.xiaomi.channel.view.webview.jsbridge.InjectedWebViewClient");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false
-                    , "SpecialLinearLayoutManager"
-                    , "com.xiaomi.channel.view.SpecialLinearLayoutManager");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false
-                    , "VideoAction"
-                    , "com.xiaomi.channel.action.VideoAction");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false
-                    , "RelationDaoAdapter"
-                    , "com.xiaomi.channel.greendao.adapter.RelationDaoAdapter");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false
-                    , "LiveWebViewClient"
-                    , "com.xiaomi.channel.view.webview.LiveWebViewClient");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(true
-                    , "onEventMainThread(EventClass.NetWorkChangeEvent"
-                    , "onEventMainThread(com.xiaomi.channel.eventbus.EventClass.NetWorkChangeEvent");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(true
-                    , "onEventMainThread(EventClass.OrientEvent"
-                    , "onEventMainThread(com.xiaomi.channel.eventbus.EventClass.OrientEvent");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(true
-                    , "LiveApplication.getInstance()"
-                    , "GlobalData.app()");
-            pairs.add(ff);
-        }
-
-
-        {
-            FF ff = new FF(false
-                    , "MakeCallController"
-                    , "com.xiaomi.channel.voip.controller.MakeCallController");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false
-                    , "TaskCallBackWrapper"
-                    , "com.xiaomi.channel.task.TaskCallBackWrapper");
-            pairs.add(ff);
-        }
-
-        {
-            FF ff = new FF(false
-                    , "RotatedSeekBar"
-                    , "com.wali.live.video.widget.RotatedSeekBar");
-            pairs.add(ff);
-        }
-
-        {
-            FF ff = new FF(false
-                    , "SwitchButton"
-                    , "com.base.view.SwitchButton");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false
-                    , "OnItemLongClickListener"
-                    , "com.xiaomi.channel.listener.OnItemLongClickListener");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false
-                    , "DateTimeUtils"
-                    , "com.mi.live.data.Utils.DateTimeUtils");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false
-                    , "SnsShareHelper"
-                    , "com.wali.live.video.view.bottom.SnsShareHelper");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false
-                    , "WatchActivity"
-                    , "com.wali.live.video.WatchActivity");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false
-                    , "MessageType"
-                    , "com.wali.live.utils.MessageType");
-            pairs.add(ff);
-        }
-
-        File bRootFile = new File("/Users/chengsimin/dev/miliao/mitalk");
+        File bRootFile = new File("/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights");
         Utils.getInstance().digui(null, bRootFile, new IFileFilter() {
                     @Override
                     public boolean accept(String path) {
-                        if (path.contains("/src/main/java-milive/") && path.endsWith(".java")) {
-                            return true;
-                        }
-                        if (path.contains("app/src/main/java-mitalk/") && path.endsWith(".java")) {
+                        if (path.contains("app/src/main/chat-java/") && path.endsWith(".java")) {
                             return true;
                         }
                         return false;

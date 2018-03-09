@@ -28,14 +28,14 @@ public class MoveLayoutAndDrawable extends BaseGenerateAction {
     }
 
     public static void main(String[] args) {
-        File bRootFile = new File("/Users/chengsimin/dev/miliao/mitalk");
+        File bRootFile = new File("/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/");
         //具体路径
         HashSet<String> javaPathSet = new HashSet();
 
         Utils.getInstance().digui(null, bRootFile, new IFileFilter() {
                     @Override
                     public boolean accept(String path) {
-                        if (path.contains("src/main/java-milive/") && path.endsWith(".java")) {
+                        if (path.contains("src/main/chat-java/") && path.endsWith(".java")) {
                             javaPathSet.add(path);
                         }
                         return false;
@@ -50,7 +50,7 @@ public class MoveLayoutAndDrawable extends BaseGenerateAction {
 
         HashSet<String> ss = new HashSet();
         for(String path : javaPathSet){
-            String nPath = path.replace("/miliao/mitalk/app/src/main/java-milive/","/walilive/walilive/app/src/main/java/");
+            String nPath = path.replace("/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/app","/Users/chengsimin/dev/miliao/mitalk/communication");
             ss.add(nPath);
         }
         MoveJavaWithLayoutAndDrawableAction.move(ss);

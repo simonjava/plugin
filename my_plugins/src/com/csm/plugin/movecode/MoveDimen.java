@@ -8,6 +8,7 @@ import org.apache.http.util.TextUtils;
 import java.io.File;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 
 public class MoveDimen {
     static class FF {
@@ -28,8 +29,8 @@ public class MoveDimen {
 
         HashSet<String> colorSet = new HashSet<>();
 
-        File aRootFile = new File("/Users/chengsimin/dev/walilive/walilive");
-        File bRootFile = new File("/Users/chengsimin/dev/miliao/mitalk");
+        File aRootFile = new File("/Users/chengsimin/dev/miliao/mitalk/");
+        File bRootFile = new File("/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/");
 
 
         Utils.getInstance().digui(null, bRootFile, new IFileFilter() {
@@ -40,13 +41,13 @@ public class MoveDimen {
         }, new Processor() {
             @Override
             public String process(String path) {
-                if (path.contains("src/main/java-milive/") && path.endsWith(".java")){
+                if (path.contains("src/main/chat-java/") && path.endsWith(".java")){
                     javaPathSet.add(path);
                 }
-                if(path.contains("src/main/res-milive/layout/")){
+                if(path.contains("src/main/chat-res/layout/")){
                     layoutSet.add(Utils.getInstance().getLayoutFileNameByPath(path));
                 }
-                if(path.contains("src/main/res-milive/drawable")){
+                if(path.contains("src/main/chat-res/drawable")){
                     drawableSet.add(Utils.getInstance().getDrawableFileNameByPath(path));
                 }
                 return null;
@@ -65,17 +66,17 @@ public class MoveDimen {
         }, new Processor() {
             @Override
             public String process(String path) {
-                if(path.contains("/app/src/main/res/") && path.endsWith("/dimens.xml")){
+                if(path.contains("/communication/src/main/res/") && path.endsWith("/dimens.xml")){
                     // 得到有乐的string
-                    HashMap<String,String> map1 = Utils.getInstance().jiexiDimenXml(path);
+                    LinkedHashMap<String,String> map1 = Utils.getInstance().jiexiDimenXml(path);
                     //System.out.println("map:"+map1);
 
                     // 得到米聊live相应的目录的string
                     String nPath = MoveJavaWithLayoutAndDrawableAction.mapPath(path);
-                    HashMap<String,String> map2 = Utils.getInstance().jiexiDimenXml(nPath);
+                    LinkedHashMap<String,String> map2 = Utils.getInstance().jiexiDimenXml(nPath);
 
                     // 得到米聊talk相应的目录的string
-                    String mPath = path.replace("/walilive/walilive/","/miliao/mitalk/");
+                    String mPath = path.replace("/Users/chengsimin/dev/miliao/mitalk/communication","/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/app");
                     HashMap<String,String> map3 = Utils.getInstance().jiexiDimenXml(mPath);
                     for(String key:colorSet){
                         if(!map2.containsKey(key) && !map3.containsKey(key)){

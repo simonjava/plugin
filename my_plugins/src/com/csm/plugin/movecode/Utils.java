@@ -25,6 +25,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -1208,8 +1209,8 @@ public class Utils {
         }
     }
 
-    HashMap<String, String> jiexiDimenXml(String colorXmlPath) {
-        HashMap<String, String> map = new HashMap<>();
+    LinkedHashMap<String, String> jiexiDimenXml(String colorXmlPath) {
+        LinkedHashMap<String, String> map = new LinkedHashMap<>();
         File fromFile = new File(colorXmlPath);
         if (!fromFile.exists()){
             return map;
@@ -1257,7 +1258,7 @@ public class Utils {
         return map;
     }
 
-    public void genDimenXmlFile(String nPath, HashMap<String, String> map2) {
+    public void genDimenXmlFile(String nPath, LinkedHashMap<String, String> map2) {
         File file = new File(nPath);
         if(!file.getParentFile().exists()){
             file.getParentFile().mkdirs();

@@ -23,14 +23,14 @@ public class MoveString {
         }
     }
 
-    public static void move(String module) {
+    public static void move(String fromModule,String toModule) {
         {
             HashSet<String> javaPathSet = new HashSet<>();
             HashSet<String> layoutSet = new HashSet<>();
             HashSet<String> stringSet = new HashSet<>();
-            File aRootFile = new File("/Users/chengsimin/dev/walilive/walilive");
-            File bRootFile = new File("/Users/chengsimin/dev/miliao/mitalk");
 
+            File aRootFile = new File("/Users/chengsimin/dev/miliao/mitalk");
+            File bRootFile = new File("/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/");
 
             Utils.getInstance().digui(null, bRootFile, new IFileFilter() {
                 @Override
@@ -40,18 +40,18 @@ public class MoveString {
             }, new Processor() {
                 @Override
                 public String process(String path) {
-                    if (module.equals("app")) {
-                        if (path.contains(module + "/src/main/java-milive/") && path.endsWith(".java")) {
+                    if (toModule.equals("app")) {
+                        if (path.contains(toModule + "/src/main/chat-java/") && path.endsWith(".java")) {
                             javaPathSet.add(path);
                         }
-                        if (path.contains(module + "/src/main/res-milive/layout/")) {
+                        if (path.contains(toModule + "/src/main/chat-res/layout/")) {
                             layoutSet.add(Utils.getInstance().getLayoutFileNameByPath(path));
                         }
                     } else {
-                        if (path.contains(module + "/src/main/java/") && path.endsWith(".java")) {
+                        if (path.contains(toModule + "/src/main/java/") && path.endsWith(".java")) {
                             javaPathSet.add(path);
                         }
-                        if (path.contains(module + "/src/main/res/layout/")) {
+                        if (path.contains(toModule + "/src/main/res/layout/")) {
                             layoutSet.add(Utils.getInstance().getLayoutFileNameByPath(path));
                         }
                     }
@@ -72,7 +72,7 @@ public class MoveString {
             }, new Processor() {
                 @Override
                 public String process(String path) {
-                    if (path.contains(module + "/src/main/res/") && path.endsWith("/strings.xml")) {
+                    if (path.contains(fromModule + "/src/main/res/") && path.endsWith("/strings.xml")) {
                         // 得到有乐的string
                         HashMap<String, String> map1 = Utils.getInstance().jiexiStringXml(path);
                         //System.out.println("map:"+map1);
@@ -82,7 +82,7 @@ public class MoveString {
                         HashMap<String, String> map2 = Utils.getInstance().jiexiStringXml(nPath);
 
                         // 得到米聊talk相应的目录的string
-                        String mPath = path.replace("/walilive/walilive/", "/miliao/mitalk/");
+                        String mPath = path.replace("/Users/chengsimin/dev/miliao/mitalk/communication","/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/app");
                         HashMap<String, String> map3 = Utils.getInstance().jiexiStringXml(mPath);
                         for (String key : stringSet) {
                             if (!map2.containsKey(key) && !map3.containsKey(key)) {
@@ -101,8 +101,9 @@ public class MoveString {
         {
             HashSet<String> javaPathSet = new HashSet<>();
             HashSet<String> arraySet = new HashSet<>();
-            File aRootFile = new File("/Users/chengsimin/dev/walilive/walilive");
-            File bRootFile = new File("/Users/chengsimin/dev/miliao/mitalk");
+
+            File aRootFile = new File("/Users/chengsimin/dev/miliao/mitalk");
+            File bRootFile = new File("/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/");
 
 
             Utils.getInstance().digui(null, bRootFile, new IFileFilter() {
@@ -113,12 +114,12 @@ public class MoveString {
             }, new Processor() {
                 @Override
                 public String process(String path) {
-                    if (module.equals("app")) {
-                        if (path.contains(module + "/src/main/java-milive/") && path.endsWith(".java")) {
+                    if (toModule.equals("app")) {
+                        if (path.contains(toModule + "/src/main/chat-java/") && path.endsWith(".java")) {
                             javaPathSet.add(path);
                         }
                     } else {
-                        if (path.contains(module + "/src/main/java/") && path.endsWith(".java")) {
+                        if (path.contains(toModule + "/src/main/java/") && path.endsWith(".java")) {
                             javaPathSet.add(path);
                         }
                     }
@@ -136,7 +137,7 @@ public class MoveString {
             }, new Processor() {
                 @Override
                 public String process(String path) {
-                    if (path.contains(module + "/src/main/res/") && path.endsWith("/arrays.xml")) {
+                    if (path.contains(fromModule + "/src/main/res/") && path.endsWith("/arrays.xml")) {
                         // 得到有乐的string
                         HashMap<String, String> map1 = Utils.getInstance().jiexiArrayXmlFile(path);
                         //System.out.println("map:"+map1);
@@ -146,7 +147,8 @@ public class MoveString {
                         HashMap<String, String> map2 = Utils.getInstance().jiexiArrayXmlFile(nPath);
 
                         // 得到米聊talk相应的目录的string
-                        String mPath = path.replace("/walilive/walilive/", "/miliao/mitalk/");
+                        // 得到米聊talk相应的目录的string
+                        String mPath = path.replace("/Users/chengsimin/dev/miliao/mitalk/communication","/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/app");
                         HashMap<String, String> map3 = Utils.getInstance().jiexiArrayXmlFile(mPath);
                         for (String key : arraySet) {
                             if (!map2.containsKey(key) && !map3.containsKey(key)) {
@@ -179,7 +181,7 @@ public class MoveString {
             }
             return;
         }
-        move("app");
-        move("data");
+        move("communication","app");
+//        move("data");
     }
 }
