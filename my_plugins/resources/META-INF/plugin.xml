@@ -46,6 +46,12 @@
         <keyboard-shortcut keymap="$default" first-keystroke="meta alt M"/>
       </action>
 
+      <action id="Myplugin.MoveCode" class="com.csm.plugin.movecode.MoveJavaWithLayoutAndDrawableAction"
+          text="从A工程移动资源到B工程"
+          description="会将图中可达节点依次移动">
+        <keyboard-shortcut keymap="$default" first-keystroke="meta alt N"/>
+      </action>
+
       <action id="Myplugin.RemoveButterKnife"
               class="com.csm.plugin.removebutterknife.MainAction"
               text="RemoveButterKnife"

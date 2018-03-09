@@ -489,8 +489,8 @@ public class Utils {
                 String file = getDrawableFileNameByPath(path);
                 if (!TextUtils.isEmpty(file)) {
                     boolean has = drawableSet.contains(file);
-                    if (has && !drawableSet.contains(path)) {
-                        drawableSet.add(path);
+                    if (has && !drawablePathSet.contains(path)) {
+                        drawablePathSet.add(path);
                         return true;
                     } else {
                         return false;

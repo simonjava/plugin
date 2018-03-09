@@ -66,11 +66,14 @@ public class RemoveResAction extends BaseGenerateAction {
         System.out.println("try");
         File rootFile = new File("/Users/chengsimin/dev/miliao/mitalk的副本");
         HashSet<String> javaSet = new HashSet();
+        //具体路径
         HashSet<String> javaPathset = new HashSet();
         HashSet<String> javaPathset2 = new HashSet();
         HashSet<String> layoutSet = new HashSet<>();
+        //具体路径
         HashSet<String> layoutPathSet = new HashSet();
         HashSet<String> drawableSet = new HashSet<>();
+        //具体路径
         HashSet<String> drawablePathSet = new HashSet();
 
 
