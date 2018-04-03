@@ -89,6 +89,35 @@ public class SimpleReplace {
             FF ff = new FF(false, "CommonUtils", "com.xiaomi.gamecenter.util.CommonUtils");
             pairs.add(ff);
         }
+        {
+            FF ff = new FF(false, "Attachment", "com.xiaomi.gamecenter.data.Attachment");
+            pairs.add(ff);
+        }
+        {
+            FF ff = new FF(false, "AttachmentUtils", "com.xiaomi.gamecenter.util.AttachmentUtils");
+            pairs.add(ff);
+        }
+        {
+            FF ff = new FF(false, "BaseActivity", "com.base.activity.BaseActivity");
+            pairs.add(ff);
+        }
+
+        {
+            FF ff = new FF(false, "KeyboardUtils", "com.xiaomi.gamecenter.util.KeyboardUtils");
+            pairs.add(ff);
+        }
+        {
+            FF ff = new FF(false, "AlertDialog", "com.base.dialog.MyAlertDialog");
+            pairs.add(ff);
+        }
+//        {
+//            FF ff = new FF(false, "FileUploadSenderWorker", "com.wali.live.upload.FileUploadSenderWorker");
+//            pairs.add(ff);
+//        }
+//        {
+//            FF ff = new FF(false, "BackTitleBar", "com.base.view.BackTitleBar");
+//            pairs.add(ff);
+//        }
 
 //        {
 //            FF ff = new FF(false, "PreferenceUtils","com.mi.live.data.preference.MLPreferenceUtils");

@@ -1064,8 +1064,8 @@ public class Utils {
         }
     }
 
-    HashMap<String, String> jiexiArrayXmlFile(String arrayXmlPath) {
-        HashMap<String, String> map = new HashMap<>();
+    LinkedHashMap<String, String> jiexiArrayXmlFile(String arrayXmlPath) {
+        LinkedHashMap<String, String> map = new LinkedHashMap<>();
         File fromFile = new File(arrayXmlPath);
         if (!fromFile.exists()){
             return map;
@@ -1136,8 +1136,8 @@ public class Utils {
         }
     }
 
-    HashMap<String, String> jiexiColorXml(String colorXmlPath) {
-        HashMap<String, String> map = new HashMap<>();
+    LinkedHashMap<String, String> jiexiColorXml(String colorXmlPath) {
+        LinkedHashMap<String, String> map = new LinkedHashMap<>();
         File fromFile = new File(colorXmlPath);
         if (!fromFile.exists()){
             return map;
@@ -1185,7 +1185,7 @@ public class Utils {
         return map;
     }
 
-    public void genColorXmlFile(String nPath, HashMap<String, String> map2) {
+    public void genColorXmlFile(String nPath, LinkedHashMap<String, String> map2) {
         File file = new File(nPath);
         if(!file.getParentFile().exists()){
             file.getParentFile().mkdirs();

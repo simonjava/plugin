@@ -8,6 +8,7 @@ import org.apache.http.util.TextUtils;
 import java.io.File;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -139,7 +140,7 @@ public class MoveString {
                 public String process(String path) {
                     if (path.contains(fromModule + "/src/main/res/") && path.endsWith("/arrays.xml")) {
                         // 得到有乐的string
-                        HashMap<String, String> map1 = Utils.getInstance().jiexiArrayXmlFile(path);
+                        LinkedHashMap<String, String> map1 = Utils.getInstance().jiexiArrayXmlFile(path);
                         //System.out.println("map:"+map1);
 
                         // 得到米聊live相应的目录的string

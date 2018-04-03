@@ -1,0 +1,226 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/main_act_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/color_black"
+                android:soundEffectsEnabled="false">
+
+    <!--<ViewStub-->
+    <!--android:id="@+id/video_player_view"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout="@layout/viewstub_video_player_view_layout" />-->
+
+    <!--  房间背景 -->
+    <ViewStub
+            android:id="@+id/live_background_view"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout="@layout/live_background" />
+
+    <!--<ViewStub-->
+    <!--android:id="@+id/vr_player_view"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout="@layout/viewstub_vr_player_watch_layout" />-->
+
+    <ViewStub
+            android:id="@+id/live_line_control_vg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout="@layout/viewstub_livelinecontrol_layout" />
+
+    <ViewStub
+            android:id="@+id/watch_layout_vs"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout="@layout/watch_layout_viewstub" />
+
+    <com.wali.live.video.widget.VideoPlayerBufferingView
+            android:id="@+id/player_buffering_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+    <FrameLayout
+            android:id="@+id/audience_link_mic_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true">
+
+        <ViewStub
+                android:id="@+id/st_mic_apply"
+                android:layout_width="@dimen/view_dimen_200"
+                android:layout_height="@dimen/view_dimen_200"
+                android:layout="@layout/watch_mic_apply" />
+    </FrameLayout>
+
+    <ImageView
+            android:id="@+id/link_pk_countDown"
+            android:layout_width="@dimen/view_dimen_180"
+            android:layout_height="@dimen/view_dimen_180"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:visibility="gone" />
+
+    <com.wali.live.view.LinkPKView
+            android:id="@+id/link_pk_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:visibility="gone"/>
+
+    <ViewStub
+            android:id="@+id/middle_area_vs"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:inflatedId="@+id/middle_area"
+            android:layout="@layout/watch_layout_middle_area" />
+
+    <!-- 主播间连麦的时候的view容器-->
+    <ViewStub
+            android:layout="@layout/empty_relativelayout"
+            android:inflatedId="@+id/line_cover_view"
+            android:id="@+id/viewStubEmptyCoverView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    <!--礼物-->
+    <!--<com.wali.live.gift.view.GiftMallView-->
+    <!--android:id="@+id/gift_mall_view"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:visibility="gone" />-->
+
+    <ViewStub
+            android:id="@+id/watch_game_barraaggeviewgroup_vs"
+            android:layout_width="586.66dp"
+            android:layout_height="96.77dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/margin_168"
+            android:layout_marginRight="@dimen/margin_168"
+            android:inflatedId="@+id/chat_barrage_view"
+            android:layout="@layout/watch_game_barrageviewgroup" />
+
+    <ViewStub
+            android:id="@+id/watch_bottom_gameinputview_vs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:inflatedId="@+id/barrage_input_container"
+            android:layout="@layout/watch_bottom_gameinputview" />
+
+
+    <ViewStub
+            android:id="@+id/gift_mall_view_viewstub"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inflatedId="@+id/gift_mall_view"
+            android:layout="@layout/view_gift_mall" />
+
+    <TextView
+            android:id="@+id/debug_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/top_container"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:shadowColor="@color/color_black"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="4"
+            android:textColor="@color/color_white" />
+
+    <RelativeLayout
+            android:id="@+id/info_tips"
+            android:layout_width="246.67dp"
+            android:layout_height="46.67dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/all_tishi_bg"
+            android:visibility="gone">
+
+        <TextView
+                android:id="@+id/tips_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_40" />
+
+        <TextView
+                android:id="@+id/dots_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/tips_tv"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_40"
+                android:visibility="gone" />
+    </RelativeLayout>
+
+    <ViewStub
+            android:layout="@layout/rl_scene_count_down"
+            android:id="@+id/viewstab_scene_count_down"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    <!-- 礼物大动画 -->
+    <com.wali.live.gift.view.GiftAnimationView
+            android:id="@+id/gift_animation_player_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    <!--底部控制区域，统一管理底部按钮、底部面板-->
+    <com.wali.live.video.view.bottom.BottomArea
+            android:id="@+id/bottom_area"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false" />
+
+    <com.wali.live.video.view.bottom.button.BarrageBtnView
+            android:id="@+id/watch_layout_barrage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/margin_20"
+            android:layout_marginLeft="@dimen/margin_10" />
+
+    <!--<ViewStub-->
+    <!--android:id="@+id/stub_error_layout"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:inflatedId="@+id/player_error_view"-->
+    <!--android:layout="@layout/video_player_error_layout" />-->
+    <!--</RelativeLayout>-->
+    <ViewStub
+            android:id="@+id/share_progress_bar_vs"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_12"
+            android:layout_alignParentTop="true"
+            android:inflatedId="@+id/share_progress_bar"
+            android:layout="@layout/watch_recording_progressbar" />
+
+    <!--试看状态条-->
+    <ViewStub
+            android:id="@+id/glance_status_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_dimen_150"
+            android:layout_alignParentBottom="true"
+            android:layout="@layout/ticket_bottom_status_bar" />
+
+    <!-- 红包界面 -->
+    <ViewStub
+            android:id="@+id/red_envelope_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout="@layout/live_envelope_view" />
+
+</RelativeLayout>
