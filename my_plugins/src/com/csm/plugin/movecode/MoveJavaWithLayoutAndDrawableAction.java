@@ -1,6 +1,5 @@
 package com.csm.plugin.movecode;
 
-import com.csm.plugin.movecode.Utils;
 import com.csm.plugin.shrink.IFileFilter;
 import com.csm.plugin.shrink.Processor;
 import com.intellij.codeInsight.CodeInsightActionHandler;
@@ -11,19 +10,12 @@ import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
-import com.intellij.openapi.vfs.LocalFileSystem;
-import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiManager;
 import com.intellij.psi.util.PsiUtilBase;
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -106,20 +98,21 @@ public class MoveJavaWithLayoutAndDrawableAction extends BaseGenerateAction {
     }
 
     static String mapPath(String path) {
-        String bPath = path.replace("/Users/chengsimin/dev/miliao/mitalk/communication/src/main/java/", "/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/app/src/main/chat-java/");
-        bPath = bPath.replace("/Users/chengsimin/dev/miliao/mitalk/communication/src/main/res/", "/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/app/src/main/chat-res/");
-        bPath = bPath.replace("/Users/chengsimin/dev/miliao/mitalk/communication/src/main/java-gen/", "/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/app/src/main/chat-java-gen/");
-
-        bPath = bPath.replace("/Users/chengsimin/dev/miliao/mitalk/livecommon/src/main/java/", "/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/app/src/main/chat-java/");
-        bPath = bPath.replace("/Users/chengsimin/dev/miliao/mitalk/livecommon/src/main/res/", "/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/app/src/main/chat-res/");
-
-        bPath = bPath.replace("/Users/chengsimin/dev/miliao/mitalk/data/src/main/java/", "/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/app/src/main/chat-java/");
-        bPath = bPath.replace("/Users/chengsimin/dev/miliao/mitalk/data/src/main/java-gen/", "/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/app/src/main/chat-java-gen/");
-        bPath = bPath.replace("/Users/chengsimin/dev/miliao/mitalk/data/src/main/res/", "/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/app/src/main/chat-res/");
-
-        bPath = bPath.replace("/Users/chengsimin/dev/miliao/mitalk/common/src/main/java/", "/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/app/src/main/chat-java/");
-        bPath = bPath.replace("/Users/chengsimin/dev/miliao/mitalk/common/src/main/res/", "/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/app/src/main/chat-res/");
-        return bPath;
+        return MoveAll.mapFrom2To(path);
+//        String bPath = path.replace("/Users/chengsimin/dev/miliao/mitalk/communication/src/main/java/", "/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/app/src/main/chat-java/");
+//        bPath = bPath.replace("/Users/chengsimin/dev/miliao/mitalk/communication/src/main/res/", "/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/app/src/main/chat-res/");
+//        bPath = bPath.replace("/Users/chengsimin/dev/miliao/mitalk/communication/src/main/java-gen/", "/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/app/src/main/chat-java-gen/");
+//
+//        bPath = bPath.replace("/Users/chengsimin/dev/miliao/mitalk/livecommon/src/main/java/", "/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/app/src/main/chat-java/");
+//        bPath = bPath.replace("/Users/chengsimin/dev/miliao/mitalk/livecommon/src/main/res/", "/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/app/src/main/chat-res/");
+//
+//        bPath = bPath.replace("/Users/chengsimin/dev/miliao/mitalk/data/src/main/java/", "/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/app/src/main/chat-java/");
+//        bPath = bPath.replace("/Users/chengsimin/dev/miliao/mitalk/data/src/main/java-gen/", "/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/app/src/main/chat-java-gen/");
+//        bPath = bPath.replace("/Users/chengsimin/dev/miliao/mitalk/data/src/main/res/", "/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/app/src/main/chat-res/");
+//
+//        bPath = bPath.replace("/Users/chengsimin/dev/miliao/mitalk/common/src/main/java/", "/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/app/src/main/chat-java/");
+//        bPath = bPath.replace("/Users/chengsimin/dev/miliao/mitalk/common/src/main/res/", "/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/app/src/main/chat-res/");
+//        return bPath;
     }
 
     void print(String tag, HashSet<String> javaSet, HashSet<String> layoutSet, HashSet<String> drawableSet) {
@@ -129,7 +122,7 @@ public class MoveJavaWithLayoutAndDrawableAction extends BaseGenerateAction {
     }
 
     public static void move(HashSet<String> inputs) {
-        File aRootFile = new File("/Users/chengsimin/dev/miliao/mitalk/");
+        File aRootFile = new File(MoveAll.fromProjectPath);
         HashSet<String> copyPath = new HashSet<>();
 
         //具体路径
@@ -146,21 +139,14 @@ public class MoveJavaWithLayoutAndDrawableAction extends BaseGenerateAction {
         Utils.getInstance().digui(null, aRootFile, new IFileFilter() {
                     @Override
                     public boolean accept(String path) {
-                        for(String finalInput:inputs){
-                            if (path.equals(finalInput)) {
-                                return true;
-                            }
-                            if (path.contains("communication/src/main/") && path.endsWith("/" + finalInput + ".java")) {
-                                return true;
-                            }
-                            if (path.contains("livecommon/src/main/") && path.endsWith("/" + finalInput + ".java")) {
-                                return true;
-                            }
-                            if (path.contains("data/src/main/") && path.endsWith("/" + finalInput + ".java")) {
-                                return true;
-                            }
-                            if (path.contains("common/src/main/") && path.endsWith("/" + finalInput + ".java")) {
-                                return true;
+                        if (MoveAll.inFrom(path)) {
+                            for (String finalInput : inputs) {
+                                if (path.equals(finalInput)) {
+                                    return true;
+                                }
+                                if (path.endsWith("/" + finalInput + ".java")) {
+                                    return true;
+                                }
                             }
                         }
                         return false;
@@ -187,7 +173,7 @@ public class MoveJavaWithLayoutAndDrawableAction extends BaseGenerateAction {
             String bPath = mapPath(path);
             //String oPath = path.replace("/walilive/walilive/","/miliao/mitalk/");
             //if(!new File(oPath).exists()){
-                Utils.copyFile(path, bPath);
+            Utils.copyFile(path, bPath);
             //}
         }
 

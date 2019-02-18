@@ -37,99 +37,21 @@ public class SimpleReplace {
     public static void main(String[] args) {
 
         ArrayList<FF> pairs = new ArrayList<>();
-        {
-            FF ff = new FF(false, "UserAccountManager", "com.xiaomi.gamecenter.account.UserAccountManager");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false, "MyUserInfoManager", "com.xiaomi.gamecenter.account.user.MyUserInfoManager");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false, "MiLinkClientAdapter", "com.xiaomi.gamecenter.milink.MiLinkClientAdapter");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false, "PermissionUtils", "com.xiaomi.gamecenter.util.PermissionUtils");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(true, "MiLinkClientAdapter.getsInstance()", "MiLinkClientAdapter.getInstance()");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false, "FileUtils", "com.xiaomi.gamecenter.util.FileUtils");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false, "MessageType", "com.xiaomi.gamecenter.data.MessageType");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false, "SDCardUtils", "com.xiaomi.gamecenter.util.SDCardUtils");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false, "MD5", "com.xiaomi.gamecenter.util.MD5");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false, "Constants", "com.xiaomi.gamecenter.Constants");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false, "R", "com.xiaomi.gamecenter.R");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false, "DisplayUtils", "com.xiaomi.gamecenter.util.DisplayUtils");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false, "CommonUtils", "com.xiaomi.gamecenter.util.CommonUtils");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false, "Attachment", "com.xiaomi.gamecenter.data.Attachment");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false, "AttachmentUtils", "com.xiaomi.gamecenter.util.AttachmentUtils");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false, "BaseActivity", "com.base.activity.BaseActivity");
-            pairs.add(ff);
-        }
-
-        {
-            FF ff = new FF(false, "KeyboardUtils", "com.xiaomi.gamecenter.util.KeyboardUtils");
-            pairs.add(ff);
-        }
-        {
-            FF ff = new FF(false, "AlertDialog", "com.base.dialog.MyAlertDialog");
-            pairs.add(ff);
-        }
 //        {
-//            FF ff = new FF(false, "FileUploadSenderWorker", "com.wali.live.upload.FileUploadSenderWorker");
+//            FF ff = new FF(false, "UserAccountManager", "com.xiaomi.gamecenter.account.UserAccountManager");
 //            pairs.add(ff);
 //        }
 //        {
-//            FF ff = new FF(false, "BackTitleBar", "com.base.view.BackTitleBar");
-//            pairs.add(ff);
-//        }
-
-//        {
-//            FF ff = new FF(false, "PreferenceUtils","com.mi.live.data.preference.MLPreferenceUtils");
+//            FF ff = new FF(true, "MiLinkClientAdapter.getsInstance()", "MiLinkClientAdapter.getInstance()");
 //            pairs.add(ff);
 //        }
 
 
-        File bRootFile = new File("/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights");
+        File bRootFile = new File(MoveAll.toProjectPath);
         Utils.getInstance().digui(null, bRootFile, new IFileFilter() {
                     @Override
                     public boolean accept(String path) {
-                        if (path.contains("app/src/main/chat-java/") && path.endsWith(".java")) {
+                        if (MoveAll.inTo(path) && path.endsWith(".java")) {
                             return true;
                         }
                         return false;

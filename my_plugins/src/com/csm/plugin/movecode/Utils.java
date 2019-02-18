@@ -1313,7 +1313,7 @@ public class Utils {
         }
     }
 
-    void digui(File root, IFileFilter f, List<Processor> processors) {
+    public void digui(File root, IFileFilter f, List<Processor> processors) {
 
         for (File file : root.listFiles()) {
             String path = file.getPath();
@@ -1348,7 +1348,7 @@ public class Utils {
     }
 
 
-    void digui(Project project, File root, IFileFilter f, Processor processor) {
+    public void digui(Project project, File root, IFileFilter f, Processor processor) {
 
         for (File file : root.listFiles()) {
             String path = file.getPath();

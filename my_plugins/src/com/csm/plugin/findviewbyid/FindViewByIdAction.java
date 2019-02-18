@@ -5,6 +5,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.editor.SelectionModel;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.impl.ProjectImpl;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
@@ -33,6 +34,7 @@ public class FindViewByIdAction extends AnAction {
         // TODtfvfvO: insert action logic here
 
         Project project = event.getData(PlatformDataKeys.PROJECT);
+
         com.intellij.openapi.editor.Editor editor = event.getData(PlatformDataKeys.EDITOR);
 
 //        module = Messages.showInputDialog(project, "dest module name?", "Input module name", Messages.getQuestionIcon(), module, null);
@@ -45,7 +47,7 @@ public class FindViewByIdAction extends AnAction {
 
         XmlFile xmlFile = (XmlFile) psiFile;
         XmlTag xmlTag = xmlFile.getRootTag();
-
+        list.clear();
         sb = new StringBuilder();
         jiexi(xmlTag);
         for (int i = 0; i < list.size(); i++) {
@@ -70,7 +72,9 @@ public class FindViewByIdAction extends AnAction {
      */
     void jiexi(XmlTag tag) {
         Holder holder = new Holder();
-        holder.className = tag.getName();
+        String[] tt = tag.getName().split("\\.");
+
+        holder.className = tt[tt.length-1];
         String idStr = tag.getAttributeValue("android:id");
         if (idStr != null && !idStr.equals("")) {
             String a[] = idStr.split("/");
@@ -145,7 +149,7 @@ public class FindViewByIdAction extends AnAction {
         }
 
         public String getDesc() {
-            String desc = String.format("%s %s = (%s)view.findViewById(R.id.%s);", className, getVarName(false), className, idStr);
+            String desc = String.format("%s %s = (%s)mRootView.findViewById(R.id.%s);", className, getVarName(false), className, idStr);
             return desc;
         }
 
@@ -155,7 +159,7 @@ public class FindViewByIdAction extends AnAction {
         }
 
         public String getFieldStr2() {
-            String desc = String.format("%s = (%s)view.findViewById(R.id.%s);", getVarName(true),className,idStr);
+            String desc = String.format("%s = (%s)mRootView.findViewById(R.id.%s);", getVarName(true),className,idStr);
             return desc;
         }
     }

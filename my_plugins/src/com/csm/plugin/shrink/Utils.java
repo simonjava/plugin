@@ -22,7 +22,7 @@ public class Utils {
         delete(rootFile, new IFileFilter() {
             Pattern pattern = Pattern.compile(".*/(\\w+)\\.java");
             Pattern pattern1 = Pattern.compile(".*/(\\w+)\\.(xml|png|webp|9\\.png|jpg|jepg|gif)");
-            Pattern pattern2 = Pattern.compile(".*res/layout/(\\w+)\\.xml");
+            Pattern pattern2 = Pattern.compile(".*/layout/(\\w+)\\.xml");
 
             @Override
             public boolean accept(String path) {
@@ -47,7 +47,7 @@ public class Utils {
                 }
 
                 // return true 就是该被删除的文件
-                if (path.contains("/res/drawable")) {
+                if (path.contains("/drawable")) {
                     // System.out.println(path + " is layout");
                     Matcher matcher = pattern1.matcher(path);
                     if (matcher.find()) {
@@ -68,7 +68,7 @@ public class Utils {
                     return true;
                 }
 
-                if (path.contains("res/layout")) {
+                if (path.contains("/layout")) {
                     // System.out.println(path + " is layout");
                     Matcher matcher = pattern2.matcher(path);
                     if (matcher.find()) {
@@ -127,11 +127,11 @@ public class Utils {
     }
 
 
-    Pattern layoutFilePattern = Pattern.compile(".*res/layout/(\\w+)\\.xml");
+    Pattern layoutFilePattern = Pattern.compile(".*/layout/(\\w+)\\.xml");
 
 
     public String getLayoutFileNameByPath(String path) {
-        if (path.contains("res/layout")) {
+        if (path.contains("/layout")) {
             // System.out.println(path + " is layout");
             Matcher matcher = layoutFilePattern.matcher(path);
             if (matcher.find()) {
@@ -148,7 +148,7 @@ public class Utils {
     Pattern drawableFilePattern = Pattern.compile(".*/(\\w+)\\.xml");
 
     public String getDrawableFileNameByPath(String path) {
-        if (path.contains("/res/drawable")) {
+        if (path.contains("/drawable")) {
             // System.out.println(path + " is layout");
             Matcher matcher = drawableFilePattern.matcher(path);
             if (matcher.find()) {

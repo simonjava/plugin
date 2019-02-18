@@ -30,8 +30,8 @@ public class MoveColor {
 
         HashSet<String> colorSet = new HashSet<>();
 
-        File aRootFile = new File("/Users/chengsimin/dev/miliao/mitalk/");
-        File bRootFile = new File("/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/");
+        File aRootFile = new File(MoveAll.fromProjectPath);
+        File bRootFile = new File(MoveAll.toProjectPath);
 
         Utils.getInstance().digui(null, bRootFile, new IFileFilter() {
             @Override
@@ -41,25 +41,24 @@ public class MoveColor {
         }, new Processor() {
             @Override
             public String process(String path) {
-                if (path.contains("src/main/chat-java/") && path.endsWith(".java")){
-                    javaPathSet.add(path);
-                }
-                if(path.contains("src/main/chat-res/layout/")){
-                    layoutSet.add(Utils.getInstance().getLayoutFileNameByPath(path));
-                }
-                if(path.contains("src/main/chat-res/drawable")){
-                    drawableSet.add(Utils.getInstance().getDrawableFileNameByPath(path));
-                }
-                if(path.contains("src/main/chat-res/color")){
-                    colorXmlSet.add(Utils.getInstance().getColorFileNameByPath(path));
+                if (MoveAll.inTo(path)) {
+                    if (path.endsWith(".java")) {
+                        javaPathSet.add(path);
+                    } else if (path.contains("/layout/")) {
+                        layoutSet.add(Utils.getInstance().getLayoutFileNameByPath(path));
+                    } else if (path.contains("/drawable")) {
+                        drawableSet.add(Utils.getInstance().getDrawableFileNameByPath(path));
+                    } else if (path.contains("/color")) {
+                        colorXmlSet.add(Utils.getInstance().getColorFileNameByPath(path));
+                    }
                 }
                 return null;
             }
         });
-        Utils.getInstance().getColorByJavaSet(bRootFile,javaPathSet,colorSet);
-        Utils.getInstance().getColorByLayoutSet(bRootFile,layoutSet,colorSet);
-        Utils.getInstance().getColorByDrawableSet(bRootFile,drawableSet,colorSet);
-        Utils.getInstance().getColorByColorXmlSet(bRootFile,colorXmlSet,colorSet);
+        Utils.getInstance().getColorByJavaSet(bRootFile, javaPathSet, colorSet);
+        Utils.getInstance().getColorByLayoutSet(bRootFile, layoutSet, colorSet);
+        Utils.getInstance().getColorByDrawableSet(bRootFile, drawableSet, colorSet);
+        Utils.getInstance().getColorByColorXmlSet(bRootFile, colorXmlSet, colorSet);
         //得到 string 的map
         //System.out.println(colorSet);
         Utils.getInstance().digui(null, aRootFile, new IFileFilter() {
@@ -70,37 +69,40 @@ public class MoveColor {
         }, new Processor() {
             @Override
             public String process(String path) {
-                if(path.contains("/communication/src/main/res/") && path.endsWith("/colors.xml")){
-                    // 得到有乐的string
-                    LinkedHashMap<String,String> map1 = Utils.getInstance().jiexiColorXml(path);
-                    //System.out.println("map:"+map1);
+                if(MoveAll.inFrom(path)){
+                    if (path.endsWith("/colors.xml")) {
+                        // 得到 from 的 color
+                        LinkedHashMap<String, String> map1 = Utils.getInstance().jiexiColorXml(path);
+                        //System.out.println("map:"+map1);
 
-                    // 得到米聊live相应的目录的string
-                    String nPath = MoveJavaWithLayoutAndDrawableAction.mapPath(path);
-                    LinkedHashMap<String,String> map2 = Utils.getInstance().jiexiColorXml(nPath);
+                        // 得到 to 相应的目录的 color
+                        String nPath = MoveJavaWithLayoutAndDrawableAction.mapPath(path);
+                        LinkedHashMap<String, String> map2 = Utils.getInstance().jiexiColorXml(nPath);
 
-                    // 得到米聊talk相应的目录的string
-                    String mPath = path.replace("/Users/chengsimin/dev/miliao/mitalk/communication","/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/app");
-                    LinkedHashMap<String,String> map3 = Utils.getInstance().jiexiColorXml(mPath);
-                    for(String key:colorSet){
-                        if(!map2.containsKey(key) && !map3.containsKey(key)){
-                            String v = map1.get(key);
-                            if(!TextUtils.isEmpty(v)){
-                                map2.put(key,v);
+                        // 得到 to 额外目录的 color
+                        String mPath = nPath.replace(MoveAll.toResNew,MoveAll.toResOrigin);
+                        LinkedHashMap<String, String> map3 = Utils.getInstance().jiexiColorXml(mPath);
+                        for (String key : colorSet) {
+                            if (!map2.containsKey(key) && !map3.containsKey(key)) {
+                                String v = map1.get(key);
+                                if (!TextUtils.isEmpty(v)) {
+                                    map2.put(key, v);
+                                }
                             }
                         }
+                        Utils.getInstance().genColorXmlFile(nPath, map2);
                     }
-                    Utils.getInstance().genColorXmlFile(nPath,map2);
-                }
-                // 还有在color文件夹下的
-                if(path.contains("/communication/src/main/res/color/")){
-                    String fileName = Utils.getInstance().getColorFileNameByPath(path);
-                    if(colorSet.contains(fileName)){
-                        //需要拷贝的
-                        String bPath = MoveJavaWithLayoutAndDrawableAction.mapPath(path);
-                        String oPath = path.replace("/Users/chengsimin/dev/miliao/mitalk/communication","/Users/chengsimin/dev/GameCenterPhone/gamecenter_knights/app");
-                        if(!new File(oPath).exists()){
-                            Utils.copyFile(path, bPath);
+
+                    // 还有在color文件夹下的
+                    if (path.contains("/color/")) {
+                        String fileName = Utils.getInstance().getColorFileNameByPath(path);
+                        if (colorSet.contains(fileName)) {
+                            //需要拷贝的
+                            String nPath = MoveJavaWithLayoutAndDrawableAction.mapPath(path);
+                            String mPath = nPath.replace(MoveAll.toResNew,MoveAll.toResOrigin);
+                            if (!new File(mPath).exists()) {
+                                Utils.copyFile(path, nPath);
+                            }
                         }
                     }
                 }

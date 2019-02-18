@@ -64,7 +64,7 @@ public class RemoveResAction extends BaseGenerateAction {
          PsiWhiteSpace
          */
         System.out.println("try");
-        File rootFile = new File("/Users/chengsimin/dev/miliao/mitalk的副本");
+        File rootFile = new File("/Users/chengsimin/dev/livesdk/livesdk");
         HashSet<String> javaSet = new HashSet();
         //具体路径
         HashSet<String> javaPathset = new HashSet();
@@ -86,7 +86,7 @@ public class RemoveResAction extends BaseGenerateAction {
         print("getJavaByAndroidManifest begin ", javaSet, layoutSet, drawableSet);
         Utils.getInstance().getJavaByAndroidManifest(rootFile, javaSet);
         System.out.println(javaSet);
-        javaSet.add("LiveApplicationEx");
+        javaSet.add("LiveSdkApplication");
         javaSet.add("MiTalkMainActivity");
         // 反射
         javaSet.add("PersonalPageZoomBehavior");
