@@ -28,13 +28,14 @@
     <!-- Add your extensions here -->
   </extensions>
 
+
   <actions>
     <group id="MyPlugin.SampleMenu" text="My Plugin" description="My Plugin">
       <add-to-group group-id="MainMenu" anchor="last"/>
 
       <!--<action id="Myplugin.Textboxes" class="com.csm.plugin.Test2" text="Text _Boxes"-->
-              <!--description="A test menu item">-->
-        <!--&lt;!&ndash;<keyboard-shortcut keymap="$default" first-keystroke="meta alt C"/>&ndash;&gt;-->
+      <!--description="A test menu item">-->
+      <!--&lt;!&ndash;<keyboard-shortcut keymap="$default" first-keystroke="meta alt C"/>&ndash;&gt;-->
       <!--</action>-->
 
       <action id="Myplugin.MoveStrRes" class="com.csm.plugin.movestr.MoveStringAction"
@@ -50,14 +51,14 @@
       </action>
 
       <action id="Myplugin.MoveCode" class="com.csm.plugin.movecode.MoveJavaWithLayoutAndDrawableAction"
-          text="从A工程移动资源到B工程"
-          description="会将图中可达节点依次移动">
+              text="从A工程移动资源到B工程"
+              description="会将图中可达节点依次移动">
         <keyboard-shortcut keymap="$default" first-keystroke="meta alt N"/>
       </action>
 
       <action id="Myplugin.FindViewById" class="com.csm.plugin.findviewbyid.FindViewByIdAction"
-          text="自动生成findviewbyid"
-          description="自动生成findviewbyid">
+              text="自动生成findviewbyid"
+              description="自动生成findviewbyid">
         <keyboard-shortcut keymap="$default" first-keystroke="meta alt B"/>
       </action>
 

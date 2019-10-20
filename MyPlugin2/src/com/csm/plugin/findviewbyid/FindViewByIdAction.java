@@ -5,14 +5,12 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.editor.SelectionModel;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.project.impl.ProjectImpl;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiManager;
 import com.intellij.psi.xml.XmlFile;
 import com.intellij.psi.xml.XmlTag;
-import com.intellij.psi.xml.XmlToken;
 
 import org.apache.http.util.TextUtils;
 
@@ -52,16 +50,38 @@ public class FindViewByIdAction extends AnAction {
         jiexi(xmlTag);
         for (int i = 0; i < list.size(); i++) {
             Holder holder = list.get(i);
+            sb.append(holder.getFieldStrKt1()).append("\r\n");
+        }
+        for (int i = 0; i < list.size(); i++) {
+            Holder holder = list.get(i);
+            sb.append(holder.getEqualsStrKt1()).append("\r\n");
+        }
+        sb.append("\r\n");
+
+        for (int i = 0; i < list.size(); i++) {
+            Holder holder = list.get(i);
+            sb.append(holder.getFieldStrKt2()).append("\r\n");
+        }
+        for (int i = 0; i < list.size(); i++) {
+            Holder holder = list.get(i);
+            sb.append(holder.getEqualsStrKt2()).append("\r\n");
+        }
+        sb.append("\r\n");
+
+        for (int i = 0; i < list.size(); i++) {
+            Holder holder = list.get(i);
             sb.append(holder.getDesc()).append("\r\n");
         }
         sb.append("\r\n");
+
+
         for (int i = 0; i < list.size(); i++) {
             Holder holder = list.get(i);
             sb.append(holder.getFieldStr()).append("\r\n");
         }
         for (int i = 0; i < list.size(); i++) {
             Holder holder = list.get(i);
-            sb.append(holder.getFieldStr2()).append("\r\n");
+            sb.append(holder.getEqualsStr()).append("\r\n");
         }
         MyInputAreaDialog.showInputText(sb.toString());
     }
@@ -158,9 +178,30 @@ public class FindViewByIdAction extends AnAction {
             return desc;
         }
 
-        public String getFieldStr2() {
+        public String getEqualsStr() {
             String desc = String.format("%s = (%s)mRootView.findViewById(R.id.%s);", getVarName(true),className,idStr);
             return desc;
         }
+
+        public String getFieldStrKt1() {
+            String desc = String.format("lateinit var %s:%s", getVarName(false),className );
+            return desc;
+        }
+
+        public String getFieldStrKt2() {
+            String desc = String.format("val %s:%s", getVarName(false),className );
+            return desc;
+        }
+
+        public String getEqualsStrKt1() {
+            String desc = String.format("%s = rootView.findViewById(R.id.%s)", getVarName(false),idStr);
+            return desc;
+        }
+
+        public String getEqualsStrKt2() {
+            String desc = String.format("%s = this.findViewById(R.id.%s)", getVarName(false),idStr);
+            return desc;
+        }
+
     }
 }
